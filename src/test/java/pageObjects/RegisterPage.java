@@ -1,0 +1,89 @@
+package pageObjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class RegisterPage {
+
+    WebDriver driver;
+
+    @FindBy(xpath = "//div[@class='nav-user-section']")
+    WebElement LoginButtonXpath;
+    @FindBy(id = "signup-toggle")
+    WebElement signupToggleId;
+    @FindBy(id = "register-firstName")
+    WebElement firstNameFieldId;
+    @FindBy(id = "register-lastName")
+    WebElement lastNameFieldId;
+    @FindBy(id = "register-email")
+    WebElement emailFieldId;
+    @FindBy(id = "register-password")
+    WebElement passwordFieldId;
+    @FindBy(id = "register-confirmPassword")
+    WebElement confirmPasswordID;
+    @FindBy(id = "register-group")
+    WebElement groupId;
+    @FindBy(id = "register-submit")
+    WebElement registerButtonId;
+
+
+//    @FindBy(xpath = "//h2[contains(text(),'Welcome back, ')]")
+//    WebElement verifyLoginIsSuccessfullyXpath;
+
+    public RegisterPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void clickLoginButton() {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(navLoginButtonXpath));
+        LoginButtonXpath.click();
+    }
+
+    public void clickSignupToggle() {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(usernameFieldId));
+        signupToggleId.click();
+    }
+
+    public void enterFirstName(String firstName)    {
+        firstNameFieldId.sendKeys(firstName);
+    }
+
+    public void enterLastName(String lastName)    {
+        lastNameFieldId.sendKeys(lastName);
+    }
+
+    public void enterEmail(String email)    {
+        emailFieldId.sendKeys(email);
+    }
+
+    public void enterPassword(String passwordRegister)    {
+        passwordFieldId.sendKeys(passwordRegister);
+    }
+
+    public void enterConfirmPassword(String confirmPassword)    {
+        confirmPasswordID.sendKeys(confirmPassword);
+    }
+
+    public void dropDownMenuGroup() throws InterruptedException {
+        WebElement dropdown = driver.findElement(By.id("register-group"));
+        Select select = new Select(dropdown);
+        select.selectByVisibleText("Group T (2026)");
+    }
+
+    public void clickCreateAccountBTN() {
+        registerButtonId.click();
+    }
+
+//    public String getLoginSuccessMessage() {
+//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(verifyLoginIsSuccessfullyXpath));
+//        return verifyLoginIsSuccessfullyXpath.getText();
+//    }
+
+}

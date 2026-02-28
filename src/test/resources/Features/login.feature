@@ -9,5 +9,5 @@ Feature: User log in test
 
     Examples:
       | username         | password  |
-      | pthuso@yahoo.com | Masuku@01 |
+      | tp@gmail.com     | @12345678 |
 
