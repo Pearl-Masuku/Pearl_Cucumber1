@@ -94,5 +94,11 @@ public class RegistrationSteps extends Base {
         adminPage.clickAdminPanel();
     }
 
+    @And("the admin should see the admin panel page")
+    public void the_admin_should_see_the_admin_panel_page()
+    {
+        Assert.assertTrue(adminPanelPage.verifyAdminPanelPageisDisplayed(), "Dashboard heading should be displayed");
+    }
+
 
 }

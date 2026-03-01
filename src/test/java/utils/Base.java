@@ -3,6 +3,7 @@ package utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pageObjects.AdminPage;
+import pageObjects.AdminPanelPage;
 import pageObjects.RegisterPage;
 
 public class Base {
@@ -11,5 +12,6 @@ public class Base {
     final WebDriver driver = browserFactory.startBrowser("chrome", "https://ndosisimplifiedautomation.vercel.app/");
     public RegisterPage registerPage = PageFactory.initElements(driver, RegisterPage.class);
     public AdminPage adminPage = PageFactory.initElements(driver, AdminPage.class);
+    public AdminPanelPage adminPanelPage = PageFactory.initElements(driver, AdminPanelPage.class);
 
 }

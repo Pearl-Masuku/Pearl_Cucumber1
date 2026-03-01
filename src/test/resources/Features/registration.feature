@@ -14,6 +14,7 @@ Feature: User Registration
     And the admin clicks the login button
     Then the admin should be redirected to the dashboard
     And the admin should click the admin panel button
+    And the admin should see the admin panel page
 
     Examples:
       | adminEmail         | adminPassword  |

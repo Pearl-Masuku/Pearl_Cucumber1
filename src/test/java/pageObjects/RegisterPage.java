@@ -34,9 +34,6 @@ public class RegisterPage {
     WebElement registerButtonId;
 
 
-//    @FindBy(xpath = "//h2[contains(text(),'Welcome back, ')]")
-//    WebElement verifyLoginIsSuccessfullyXpath;
-
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
     }

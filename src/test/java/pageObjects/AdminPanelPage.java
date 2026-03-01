@@ -5,15 +5,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AdminPage {
+public class AdminPanelPage {
 
     WebDriver driver;
 
+
+    @FindBy(xpath = "//*[@id=\"app-root\"]/div/div[3]/div/div[1]/h1")
+    WebElement adminPanelDashboardTitleXpath;
     @FindBy(id = "login-heading")
     WebElement learningMaterialTitleId;
     @FindBy(id = "login-email")
@@ -22,41 +24,18 @@ public class AdminPage {
     WebElement adminPasswordFieldId;
     @FindBy(id = "login-submit")
     WebElement adminloginButtonId;
-    @FindBy(xpath = "//*[@id=\"app-main-content\"]/section/div[1]/h2")
-    WebElement adminDashboardTitleXpath;
 
 
-    public AdminPage(WebDriver driver) {
+    public AdminPanelPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public String verifyAdminPageisDisplayed() {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(learningMaterialTitleId));
-        return learningMaterialTitleId.getText();
+    public boolean verifyAdminPanelPageisDisplayed()
+    {
+        new WebDriverWait(driver, Duration.ofSeconds(10)) .until(ExpectedConditions.visibilityOf(adminPanelDashboardTitleXpath));
+        return adminPanelDashboardTitleXpath.isDisplayed();
     }
 
-    public void enterAdminEmail(String adminEmail)
-    {
-        adminEmailFieldId.clear();
-        adminEmailFieldId.sendKeys(adminEmail);
-    }
-
-    public void enterAdminPassword(String adminPassword)
-    {
-        adminPasswordFieldId.clear();
-        adminPasswordFieldId.sendKeys(adminPassword);
-    }
-
-    public void clickLoginButton()
-    {
-        adminloginButtonId.click();
-    }
-
-    public boolean isAdminDashboardDisplayed()
-    {
-        new WebDriverWait(driver, Duration.ofSeconds(10)) .until(ExpectedConditions.visibilityOf(adminDashboardTitleXpath));
-        return adminDashboardTitleXpath.isDisplayed();
-    }
 
     public void clickAdminPanel() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
