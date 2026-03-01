@@ -42,12 +42,12 @@ public class RegisterPage {
     }
 
     public void clickLoginButton() {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(navLoginButtonXpath));
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(LoginButtonXpath));
         LoginButtonXpath.click();
     }
 
     public void clickSignupToggle() {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(usernameFieldId));
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(signupToggleId));
         signupToggleId.click();
     }
 
@@ -71,7 +71,7 @@ public class RegisterPage {
         confirmPasswordID.sendKeys(confirmPassword);
     }
 
-    public void dropDownMenuGroup() throws InterruptedException {
+    public void dropDownMenuGroup() {
         WebElement dropdown = driver.findElement(By.id("register-group"));
         Select select = new Select(dropdown);
         select.selectByVisibleText("Group T (2026)");
@@ -81,9 +81,10 @@ public class RegisterPage {
         registerButtonId.click();
     }
 
-//    public String getLoginSuccessMessage() {
-//        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(verifyLoginIsSuccessfullyXpath));
-//        return verifyLoginIsSuccessfullyXpath.getText();
-//    }
+    public void acceptAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
+    }
 
 }
