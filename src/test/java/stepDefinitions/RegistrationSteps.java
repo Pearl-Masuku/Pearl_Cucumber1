@@ -173,5 +173,11 @@ public class RegistrationSteps extends Base {
         adminPage.clickAdminLogout();
     }
 
+    @Then("the admin should logout successfully")
+    public void confirm_logout_successfully()
+    {
+        adminPage.acceptLogoutAlert();
+    }
+
 
 }

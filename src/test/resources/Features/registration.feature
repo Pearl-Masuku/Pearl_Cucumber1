@@ -28,6 +28,7 @@ Feature: User Registration
     And the admin should click the back to website button
     Then the admin should be redirected to the home page
     And the admin should click the logout button
+    Then the admin should logout successfully
 
 
 
