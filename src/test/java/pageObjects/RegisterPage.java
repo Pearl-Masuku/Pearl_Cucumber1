@@ -56,12 +56,12 @@ public class RegisterPage {
         lastNameFieldId.sendKeys(lastName);
     }
 
-    public void enterEmail(String email)    {
-        emailFieldId.sendKeys(email);
+    public void enterEmail(String newlyRegisteredEmail)    {
+        emailFieldId.sendKeys(newlyRegisteredEmail);
     }
 
-    public void enterPassword(String passwordRegister)    {
-        passwordFieldId.sendKeys(passwordRegister);
+    public void enterPassword(String newlyRegisteredPassword)    {
+        passwordFieldId.sendKeys(newlyRegisteredPassword);
     }
 
     public void enterConfirmPassword(String confirmPassword)    {

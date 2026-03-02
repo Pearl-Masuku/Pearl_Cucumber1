@@ -2,10 +2,7 @@ package utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import pageObjects.AdminPage;
-import pageObjects.AdminPanelPage;
-import pageObjects.RegisterPage;
-import pageObjects.UserManagementPage;
+import pageObjects.*;
 
 public class Base {
 
@@ -15,5 +12,6 @@ public class Base {
     public AdminPage adminPage = PageFactory.initElements(driver, AdminPage.class);
     public AdminPanelPage adminPanelPage = PageFactory.initElements(driver, AdminPanelPage.class);
     public UserManagementPage userManagementPage = PageFactory.initElements(driver, UserManagementPage.class);
+    public ApprovedAdminPage approvedAdminPage = PageFactory.initElements(driver, ApprovedAdminPage.class);
 
 }

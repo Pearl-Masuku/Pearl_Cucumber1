@@ -15,6 +15,7 @@ public class RegistrationSteps extends Base {
 
     Faker faker = new Faker();
     public static String newlyRegisteredEmail;
+    public static String newlyRegisteredPassword;
 
     @Given("the user is on the registration page")
     public void userOnRegistrationPage() {
@@ -36,14 +37,14 @@ public class RegistrationSteps extends Base {
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
         newlyRegisteredEmail = faker.internet().emailAddress();
-        String password = faker.internet().password(8, 12,true, true, true) + "@";
-        System.out.println(password);
-        String confirmPassword = password;
+        newlyRegisteredPassword = faker.internet().password(8, 12,true, true, true) + "@";
+        System.out.println(newlyRegisteredPassword);
+        String confirmPassword = newlyRegisteredPassword;
 
         registerPage.enterFirstName(firstName);
         registerPage.enterLastName(lastName);
         registerPage.enterEmail(newlyRegisteredEmail);
-        registerPage.enterPassword(password);
+        registerPage.enterPassword(newlyRegisteredPassword);
         registerPage.enterConfirmPassword(confirmPassword);
 
     }
@@ -183,6 +184,34 @@ public class RegistrationSteps extends Base {
     public void verify_main_homePage_isDisplayed()
     {
         Assert.assertTrue(adminPage.isMainHomePageDisplayed(), "Expected to land on main home page after logout");
+    }
+
+    @When("the new admin should be able to log in with the updated credentials")
+    public void new_admin_click_login_button() {
+        registerPage.clickLoginButton();
+    }
+
+    @And("the new admin should be redirected to the login page")
+    public void verifyNewAdminLoginPage() {
+        adminPage.verifyAdminPageisDisplayed();
+    }
+
+    @When("the new admin should enter new credentials and click login button")
+    public void new_admin_enter_valid_credentials()
+    {
+        approvedAdminPage.enterNewAdminEmail(RegistrationSteps.newlyRegisteredEmail);
+        approvedAdminPage.enterNewAdminPassword(RegistrationSteps.newlyRegisteredPassword);
+        approvedAdminPage.clickNewLoginButton();
+    }
+
+    @And("the new admin should be redirected to the dashboard")
+    public void verifyNewAdminDashboard() {
+        approvedAdminPage.isNewAdminDashboardDisplayed();
+    }
+
+    @And("the admin should click the admin panel button")
+    public void the_admin_should_click_the_admin_panel_button() {
+        adminPage.clickAdminPanel();
     }
 
 

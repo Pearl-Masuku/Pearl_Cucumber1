@@ -31,8 +31,6 @@ public class AdminPage {
 
 
 
-
-
     public AdminPage(WebDriver driver) {
         this.driver = driver;
     }

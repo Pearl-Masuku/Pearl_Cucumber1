@@ -30,6 +30,12 @@ Feature: User Registration
     And the admin should click the logout button
     Then the admin should logout successfully
     And the admin should be redirected to the main home page
+    And the new admin should be able to log in with the updated credentials
+    And the new admin should be redirected to the login page
+    And the new admin should enter new credentials and click login button
+    Then the new admin should be redirected to the dashboard
+#    And the new admin should click the login button
+#    Then the new admin should be redirected to the admin dashboard
 
 
 
