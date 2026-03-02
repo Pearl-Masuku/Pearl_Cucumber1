@@ -15,6 +15,9 @@ Feature: User Registration
     Then the admin should be redirected to the dashboard
     And the admin should click the admin panel button
     And the admin should see the admin panel page
+    And the admin should click the approval button
+    Then the admin should be redirected to the user approval page
+    And the admin searches for the newly registered user
 
     Examples:
       | adminEmail         | adminPassword  |

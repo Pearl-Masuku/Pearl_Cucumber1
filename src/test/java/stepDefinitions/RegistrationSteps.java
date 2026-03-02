@@ -15,6 +15,7 @@ public class RegistrationSteps extends Base {
 
     Faker faker = new Faker();
     WebDriver driver;
+    String newlyRegisteredEmail;
 
     @Given("the user is on the registration page")
     public void userOnRegistrationPage() {
@@ -35,14 +36,14 @@ public class RegistrationSteps extends Base {
     public void enterRandomDetails() {
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
-        String email = faker.internet().emailAddress();
+        newlyRegisteredEmail = faker.internet().emailAddress();
         String password = faker.internet().password(8, 12,true, true, true) + "@";
         System.out.println(password);
         String confirmPassword = password;
 
         registerPage.enterFirstName(firstName);
         registerPage.enterLastName(lastName);
-        registerPage.enterEmail(email);
+        registerPage.enterEmail(newlyRegisteredEmail);
         registerPage.enterPassword(password);
         registerPage.enterConfirmPassword(confirmPassword);
 
@@ -97,7 +98,24 @@ public class RegistrationSteps extends Base {
     @And("the admin should see the admin panel page")
     public void the_admin_should_see_the_admin_panel_page()
     {
-        Assert.assertTrue(adminPanelPage.verifyAdminPanelPageisDisplayed(), "Dashboard heading should be displayed");
+        Assert.assertTrue(adminPanelPage.verifyAdminPanelPageisDisplayed(), "Admin Panel heading should be displayed");
+    }
+
+    @And("the admin should click the approval button")
+    public void the_admin_should_click_the_approval_button() {
+        adminPanelPage.clickApprovalButton();
+    }
+
+    @Then("the admin should be redirected to the user approval page")
+    public void admin_should_be_redirected_to_the_approval_page()
+    {
+        Assert.assertTrue(adminPanelPage.verifyApprovalPanelPageisDisplayed(), "User  Panel heading should be displayed");
+    }
+
+    @And("the admin searches for the newly registered user")
+    public void adminSearchesForUser()
+    {
+        adminPanelPage.searchUserByEmail(newlyRegisteredEmail);
     }
 
 
