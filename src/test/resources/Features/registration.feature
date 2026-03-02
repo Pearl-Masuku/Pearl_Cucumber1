@@ -18,6 +18,15 @@ Feature: User Registration
     And the admin should click the approval button
     Then the admin should be redirected to the user approval page
     And the admin searches for the newly registered user
+    And the admin approves the user registration
+    Then the user should be approved successfully
+    And the admin should click the users button
+    Then the admin should see the list of users
+    And the admin searches for the approved user
+    And the admin updates the user role to admin
+    Then the user role should be updated successfully
+
+
 
     Examples:
       | adminEmail         | adminPassword  |

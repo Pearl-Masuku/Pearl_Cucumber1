@@ -66,7 +66,6 @@ public class AdminPage {
         // 2. Now click a specific item inside the dropdown
         WebElement adminPanelBtn = wait.until( ExpectedConditions.elementToBeClickable( By.xpath("//button[@class='nav-dropdown-item']//span[text()='Admin Panel']") ) );
         adminPanelBtn.click();
-
     }
 
 

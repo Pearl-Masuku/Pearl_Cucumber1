@@ -5,6 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 import pageObjects.AdminPage;
 import pageObjects.AdminPanelPage;
 import pageObjects.RegisterPage;
+import pageObjects.UserManagementPage;
 
 public class Base {
 
@@ -13,5 +14,6 @@ public class Base {
     public RegisterPage registerPage = PageFactory.initElements(driver, RegisterPage.class);
     public AdminPage adminPage = PageFactory.initElements(driver, AdminPage.class);
     public AdminPanelPage adminPanelPage = PageFactory.initElements(driver, AdminPanelPage.class);
+    public UserManagementPage userManagementPage = PageFactory.initElements(driver, UserManagementPage.class);
 
 }

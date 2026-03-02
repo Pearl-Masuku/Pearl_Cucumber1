@@ -14,8 +14,7 @@ import java.time.Duration;
 public class RegistrationSteps extends Base {
 
     Faker faker = new Faker();
-    WebDriver driver;
-    String newlyRegisteredEmail;
+    public static String newlyRegisteredEmail;
 
     @Given("the user is on the registration page")
     public void userOnRegistrationPage() {
@@ -115,7 +114,46 @@ public class RegistrationSteps extends Base {
     @And("the admin searches for the newly registered user")
     public void adminSearchesForUser()
     {
-        adminPanelPage.searchUserByEmail(newlyRegisteredEmail);
+        adminPanelPage.searchUserByEmail(RegistrationSteps.newlyRegisteredEmail);
+    }
+
+    @And("the admin approves the user registration")
+    public void the_admin_approves_the_user_registration()
+    {
+        adminPanelPage.clickUserApprovalButton();
+    }
+
+    @Then("the user should be approved successfully")
+    public void user_should_be_approved_successfully()
+    {
+        Assert.assertTrue(adminPanelPage.verifyApprovalConfirmation(), "Expected approval confirmation message to be displayed");
+    }
+
+    @And("the admin should click the users button")
+    public void the_admin_should_click_the_users_button() {
+        userManagementPage.clickUsersButton();
+    }
+
+    @And("the admin should see the list of users")
+    public void the_admin_should_see_the_list_of_users()
+    {
+        Assert.assertTrue(userManagementPage.verifyUserManagementIsDisplayed(), "User management heading should be displayed");
+    }
+
+    @And("the admin searches for the approved user")
+    public void adminSearchesApprovedUser()
+    {
+        userManagementPage.searchApprovedUserByEmail(RegistrationSteps.newlyRegisteredEmail);
+    }
+
+    @And("the admin updates the user role to admin")
+    public void update_user_role_to_admin() {
+        userManagementPage.selectUserRole();
+    }
+
+    @Then("the user role should be updated successfully")
+    public void user_role_should_be_updated_successfully() {
+        userManagementPage.handleMultipleAlerts(2);
     }
 
 
