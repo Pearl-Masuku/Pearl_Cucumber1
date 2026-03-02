@@ -25,6 +25,9 @@ Feature: User Registration
     And the admin searches for the approved user
     And the admin updates the user role to admin
     Then the user role should be updated successfully
+    And the admin should click the back to website button
+    Then the admin should be redirected to the home page
+    And the admin should click the logout button
 
 
 

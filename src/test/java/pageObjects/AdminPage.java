@@ -27,6 +27,8 @@ public class AdminPage {
     WebElement adminDashboardTitleXpath;
 
 
+
+
     public AdminPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -66,6 +68,21 @@ public class AdminPage {
         // 2. Now click a specific item inside the dropdown
         WebElement adminPanelBtn = wait.until( ExpectedConditions.elementToBeClickable( By.xpath("//button[@class='nav-dropdown-item']//span[text()='Admin Panel']") ) );
         adminPanelBtn.click();
+    }
+
+    public void clickAdminLogout() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement dropdownToggle = wait.until( ExpectedConditions.elementToBeClickable( By.xpath("//*[@id=\"app-root\"]/nav/div[1]/div[3]/div/button") ) );
+        dropdownToggle.click();
+        // 2. Now click a specific item inside the dropdown
+        WebElement adminPanelBtn = wait.until( ExpectedConditions.elementToBeClickable( By.xpath("//button[@class='nav-dropdown-item']//span[text()='Logout']") ) );
+        adminPanelBtn.click();
+    }
+
+    public void acceptLogoutAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
     }
 
 

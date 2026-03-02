@@ -17,6 +17,8 @@ public class UserManagementPage {
     WebElement userManagementBtnXpath;
     @FindBy(xpath = "//*[@id=\"app-root\"]/div/div[3]/div/div[1]/div[1]/h1")
     WebElement userManagementTextXpath;
+    @FindBy(xpath = "//*[@id=\"app-root\"]/div/div[2]/div[2]/button")
+    WebElement userManagementBackBtnXpath;
 
 
 
@@ -60,6 +62,11 @@ public class UserManagementPage {
             } catch (TimeoutException e) { System.out.println("No alert appeared for step " + i);
             }
         }
+    }
+
+    public void clickBackToWebsiteButton() {
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(userManagementBackBtnXpath));
+        userManagementBackBtnXpath.click();
     }
 
 }

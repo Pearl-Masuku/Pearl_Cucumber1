@@ -156,5 +156,22 @@ public class RegistrationSteps extends Base {
         userManagementPage.handleMultipleAlerts(2);
     }
 
+    @And("the admin should click the back to website button")
+    public void the_admin_should_click_back_to_website_button() {
+        userManagementPage.clickBackToWebsiteButton();
+    }
+
+    @Then("the admin should be redirected to the home page")
+    public void admin_should_be_redirected_to_the_home_page()
+    {
+        Assert.assertTrue(adminPage.isAdminDashboardDisplayed(), "Expected to land on Admin Dashboard after updating user role");
+    }
+
+    @And("the admin should click the logout button")
+    public void the_admin_should_click_the_logout_button()
+    {
+        adminPage.clickAdminLogout();
+    }
+
 
 }
