@@ -29,6 +29,7 @@ Feature: User Registration
     Then the admin should be redirected to the home page
     And the admin should click the logout button
     Then the admin should logout successfully
+    And the admin should be redirected to the main home page
 
 
 

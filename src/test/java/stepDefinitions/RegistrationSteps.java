@@ -179,5 +179,11 @@ public class RegistrationSteps extends Base {
         adminPage.acceptLogoutAlert();
     }
 
+    @Then("the admin should be redirected to the main home page")
+    public void verify_main_homePage_isDisplayed()
+    {
+        Assert.assertTrue(adminPage.isMainHomePageDisplayed(), "Expected to land on main home page after logout");
+    }
+
 
 }
