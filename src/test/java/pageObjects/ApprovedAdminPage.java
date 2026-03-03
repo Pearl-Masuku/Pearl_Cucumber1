@@ -21,8 +21,12 @@ public class ApprovedAdminPage {
     WebElement newAdminloginButtonId;
     @FindBy(xpath = "//*[@id=\"app-main-content\"]/section/div[1]/h2")
     WebElement newAdminDashboardTitleXpath;
-//    @FindBy(xpath = "//*[@id=\"overview-hero\"]/div")
-//    WebElement mainHomePageTitleXpath;
+    @FindBy(xpath = "//*[@id=\"app-root\"]/div/div/div[1]/div/h1")
+    WebElement instructorDashboardTitleXpath;
+    @FindBy(xpath = "//*[@id=\"app-root\"]/div/div/div[1]/button")
+    WebElement newAdminBackButtonId;
+
+
 
 
 
@@ -62,6 +66,17 @@ public class ApprovedAdminPage {
         // 2. Now click a specific item inside the dropdown
         WebElement adminPanelBtn = wait.until( ExpectedConditions.elementToBeClickable( By.xpath("//button[@class='nav-dropdown-item']//span[text()='Instructor Panel']") ) );
         adminPanelBtn.click();
+    }
+
+    public boolean isInstructorDashboardDisplayed()
+    {
+        new WebDriverWait(driver, Duration.ofSeconds(10)) .until(ExpectedConditions.visibilityOf(instructorDashboardTitleXpath));
+        return instructorDashboardTitleXpath.isDisplayed();
+    }
+
+    public void clickNewBackToWebsiteButton()
+    {
+        newAdminBackButtonId.click();
     }
 //
 //    public void clickAdminLogout() {

@@ -34,8 +34,9 @@ Feature: User Registration
     And the new admin should be redirected to the login page
     And the new admin should enter new credentials and click login button
     Then the new admin should be redirected to the dashboard
-#    And the new admin should click the login button
-#    Then the new admin should be redirected to the admin dashboard
+    And the new admin should click the instructor panel button
+    And the new admin should be redirected to the instructor dashboard
+    And the new admin should click the back to website button
 
 
 

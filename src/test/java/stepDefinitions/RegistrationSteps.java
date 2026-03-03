@@ -209,9 +209,19 @@ public class RegistrationSteps extends Base {
         approvedAdminPage.isNewAdminDashboardDisplayed();
     }
 
-    @And("the admin should click the admin panel button")
-    public void the_admin_should_click_the_admin_panel_button() {
-        adminPage.clickAdminPanel();
+    @And("the new admin should click the instructor panel button")
+    public void the_admin_should_click_the_instructor_panel_button() {
+        approvedAdminPage.clickInstructorPanel();
+    }
+
+    @And("the new admin should be redirected to the instructor dashboard")
+    public void verifyInstructorDashboard() {
+        approvedAdminPage.isInstructorDashboardDisplayed();
+    }
+
+    @And("the new admin should click the back to website button")
+    public void new_admin_click_back_to_website_button() {
+        approvedAdminPage.clickNewBackToWebsiteButton();
     }
 
 
