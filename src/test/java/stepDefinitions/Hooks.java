@@ -1,17 +1,17 @@
 package stepDefinitions;
 
-import io.cucumber.java.BeforeAll;
-import io.cucumber.java.AfterAll;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import utils.Base;
 
 public class Hooks {
 
-    @BeforeAll
+    @BeforeClass
     public static void setUp() {
         Base.getDriver(); // start browser once before all scenarios
     }
 
-    @AfterAll
+    @AfterClass
     public static void tearDown() {
         Base.quitDriver(); // quit browser once after all scenarios
     }

@@ -72,7 +72,7 @@ public class RegisterPage {
     public void dropDownMenuGroup() {
         WebElement dropdown = driver.findElement(By.id("register-group"));
         Select select = new Select(dropdown);
-        select.selectByVisibleText("Group T (2026)");
+        select.selectByVisibleText("group 5 assignment (2026)");
     }
 
     public void clickCreateAccountBTN() {
