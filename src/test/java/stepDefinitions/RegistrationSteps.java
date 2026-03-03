@@ -220,7 +220,7 @@ public class RegistrationSteps extends Base {
 
     @And("the new admin should be redirected back to the instructor dashboard")
     public void verify_Back_To_InstructorDashboard() {
-        approvedAdminPage.verifyLastInstructorDashboardDisplayed();
+        approvedAdminPage.verifyLastInstructorDashboard();
     }
 
     @And("the new admin should click the logout button")
@@ -228,10 +228,15 @@ public class RegistrationSteps extends Base {
         approvedAdminPage.clickInstructorLogout();
     }
 
-    @Then("the new admin should logout successfully")
+    @And("the new admin should logout successfully")
     public void confirm_admin_logout_successfully()
     {
         approvedAdminPage.acceptLogoutPopUp();
+    }
+
+    @Then("the new admin should be redirected to the main home page")
+    public void verify_Back_To_LastHomePage() {
+        approvedAdminPage.verifyLastHomePage();
     }
 
 

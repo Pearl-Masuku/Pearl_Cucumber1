@@ -28,6 +28,10 @@ public class ApprovedAdminPage {
     WebElement newAdminBackButtonId;
     @FindBy(xpath = "//*[@id=\"app-main-content\"]/section/div[1]/h2")
     WebElement instructorDashboardXpath;
+    @FindBy(xpath = "//*[@id=\"overview-hero\"]/h1")
+    WebElement newInstructorLastHomePageId;
+
+
 
 
 
@@ -79,7 +83,7 @@ public class ApprovedAdminPage {
         newAdminBackButtonId.click();
     }
 
-    public boolean verifyLastInstructorDashboardDisplayed()
+    public boolean verifyLastInstructorDashboard()
     {
         new WebDriverWait(driver, Duration.ofSeconds(10)) .until(ExpectedConditions.visibilityOf(instructorDashboardXpath));
         return instructorDashboardXpath.isDisplayed();
@@ -98,6 +102,12 @@ public class ApprovedAdminPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
+    }
+
+    public boolean verifyLastHomePage()
+    {
+        new WebDriverWait(driver, Duration.ofSeconds(10)) .until(ExpectedConditions.visibilityOf(newInstructorLastHomePageId));
+        return newInstructorLastHomePageId.isDisplayed();
     }
 
 }

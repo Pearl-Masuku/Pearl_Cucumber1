@@ -60,4 +60,5 @@ Scenario: Register a new user with random data
               And the new admin should click the back to website button
               And the new admin should be redirected back to the instructor dashboard
               And the new admin should click the logout button
-              Then the new admin should logout successfully
+              And the new admin should logout successfully
+              Then the new admin should be redirected to the main home page
