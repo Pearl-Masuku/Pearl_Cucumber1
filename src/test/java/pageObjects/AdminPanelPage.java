@@ -8,12 +8,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import utils.Base;
 
 import java.time.Duration;
 
 public class AdminPanelPage {
 
-    WebDriver driver;
+    WebDriver driver = Base.getDriver();
 
 
     @FindBy(xpath = "//*[@id=\"app-root\"]/div/div[3]/div/div[1]/h1")

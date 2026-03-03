@@ -6,12 +6,29 @@ import pageObjects.*;
 
 public class Base {
 
-    BrowserFactory browserFactory = new BrowserFactory();
-    final WebDriver driver = browserFactory.startBrowser("chrome", "https://ndosisimplifiedautomation.vercel.app/");
-    public RegisterPage registerPage = PageFactory.initElements(driver, RegisterPage.class);
-    public AdminPage adminPage = PageFactory.initElements(driver, AdminPage.class);
-    public AdminPanelPage adminPanelPage = PageFactory.initElements(driver, AdminPanelPage.class);
-    public UserManagementPage userManagementPage = PageFactory.initElements(driver, UserManagementPage.class);
-    public ApprovedAdminPage approvedAdminPage = PageFactory.initElements(driver, ApprovedAdminPage.class);
+    private static WebDriver driver;
+    private static BrowserFactory browserFactory = new BrowserFactory();
 
+    // Singleton driver getter
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            driver = browserFactory.startBrowser("chrome", "https://ndosisimplifiedautomation.vercel.app/");
+        }
+        return driver;
+    }
+
+    // Quit driver once after all scenarios
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
+
+    // Page objects initialized with shared driver
+    public RegisterPage registerPage = PageFactory.initElements(getDriver(), RegisterPage.class);
+    public AdminPage adminPage = PageFactory.initElements(getDriver(), AdminPage.class);
+    public AdminPanelPage adminPanelPage = PageFactory.initElements(getDriver(), AdminPanelPage.class);
+    public UserManagementPage userManagementPage = PageFactory.initElements(getDriver(), UserManagementPage.class);
+    public ApprovedAdminPage approvedAdminPage = PageFactory.initElements(getDriver(), ApprovedAdminPage.class);
 }

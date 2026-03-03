@@ -5,12 +5,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Base;
 
 import java.time.Duration;
 
 public class UserManagementPage {
 
-    WebDriver driver;
+    WebDriver driver = Base.getDriver();
 
 
     @FindBy(xpath = "//*[@id=\"app-root\"]/div/div[2]/nav/button[2]")
