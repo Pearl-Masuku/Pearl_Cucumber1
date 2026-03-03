@@ -25,9 +25,8 @@ public class ApprovedAdminPage {
     WebElement instructorDashboardTitleXpath;
     @FindBy(xpath = "//*[@id=\"app-root\"]/div/div/div[1]/button")
     WebElement newAdminBackButtonId;
-
-
-
+    @FindBy(xpath = "//*[@id=\"app-main-content\"]/section/div[1]/h2")
+    WebElement instructorDashboardXpath;
 
 
 
@@ -78,27 +77,26 @@ public class ApprovedAdminPage {
     {
         newAdminBackButtonId.click();
     }
-//
-//    public void clickAdminLogout() {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        WebElement dropdownToggle = wait.until( ExpectedConditions.elementToBeClickable( By.xpath("//*[@id=\"app-root\"]/nav/div[1]/div[3]/div/button") ) );
-//        dropdownToggle.click();
-//        // 2. Now click a specific item inside the dropdown
-//        WebElement adminPanelBtn = wait.until( ExpectedConditions.elementToBeClickable( By.xpath("//button[@class='nav-dropdown-item']//span[text()='Logout']") ) );
-//        adminPanelBtn.click();
-//    }
-//
-//    public void acceptLogoutAlert() {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.alertIsPresent());
-//        driver.switchTo().alert().accept();
-//    }
-//
-//    public boolean isMainHomePageDisplayed()
-//    {
-//        new WebDriverWait(driver, Duration.ofSeconds(10)) .until(ExpectedConditions.visibilityOf(mainHomePageTitleXpath));
-//        return mainHomePageTitleXpath.isDisplayed();
-//    }
 
+    public boolean verifyLastInstructorDashboardDisplayed()
+    {
+        new WebDriverWait(driver, Duration.ofSeconds(10)) .until(ExpectedConditions.visibilityOf(instructorDashboardXpath));
+        return instructorDashboardXpath.isDisplayed();
+    }
+
+    public void clickInstructorLogout() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement dropdownToggle = wait.until( ExpectedConditions.elementToBeClickable( By.xpath("//*[@id=\"app-root\"]/nav/div[1]/div[3]/div/button") ) );
+        dropdownToggle.click();
+        // 2. Now click a specific item inside the dropdown
+        WebElement adminPanelBtn = wait.until( ExpectedConditions.elementToBeClickable( By.xpath("//button[@class='nav-dropdown-item']//span[text()='Logout']") ) );
+        adminPanelBtn.click();
+    }
+
+    public void acceptLogoutPopUp() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
+    }
 
 }
